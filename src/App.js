@@ -1,5 +1,6 @@
 import './App.css';
 import DisplayArea from './Components/DisplayArea/DisplayArea';
+import SearchBar from './Components/SearchBar/SearchBar';
 
 function App() {
 
@@ -11,7 +12,7 @@ function App() {
     <div className="container">
 
       {/* Navbar */}
-      {/* Searchbar */}
+      <SearchBar />
 
       <p className="header">Hong Kong</p>
       <p className="header">{formattedDate}</p>
