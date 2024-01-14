@@ -33,7 +33,7 @@
   flex-direction: row;
   justify-content: space-around;
   width: 90%;
-  background-color: lightgrey;
+  background-color: #F0F5F9;
   border-radius: 40px;
   padding: 15px 0;
   margin-top: 10px;
@@ -61,9 +61,15 @@
   flex-direction: column;
   align-items: center;
   margin: 10px 10px;
-  border: 1px solid red;
+  /* background-color: #DAEAF5; */
+  background-color: #C3E2F9;
   border-radius: 15px;
   padding: 10px;
+}
+
+.forecast:hover {
+  background-color: #5DABE3;
+  cursor: pointer;
 }
 
 .forecastImage {
