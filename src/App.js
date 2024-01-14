@@ -1,25 +1,29 @@
-import './App.css';
-import DisplayArea from './Components/DisplayArea/DisplayArea';
-import SearchBar from './Components/SearchBar/SearchBar';
+import {
+	createBrowserRouter,
+	Route,
+	createRoutesFromElements,
+	RouterProvider,
+} from "react-router-dom";
+
+import Home from "./Components/Pages/Home";
+import Signup from "./Components/Pages/Signup"
+import Login from "./Components/Pages/Login"
+import RootLayout from "./RootLayout";
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<RootLayout />}>
+      <Route index element={<Home />} />
+      <Route path="signup" element={<Signup />} />
+      <Route path="login" element={<Login />} />
+    </Route>
+  )
+)
 
 function App() {
-
-  const today = new Date();
-  const options = { weekday: 'long', month: 'long', day: 'numeric' };
-  const formattedDate = today.toLocaleDateString('en-US', options);
-  
   return (
-    <div className="container">
-
-      {/* Navbar */}
-      <SearchBar />
-
-      <p className="header">Hong Kong</p>
-      <p className="header">{formattedDate}</p>
-
-      <DisplayArea />
-    </div>
-  );
+    <RouterProvider router={router} />
+  )
 }
 
 export default App;
