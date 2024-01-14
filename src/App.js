@@ -1,11 +1,22 @@
 import './App.css';
+import DisplayArea from './Components/DisplayArea/DisplayArea';
 
 function App() {
+
+  const today = new Date();
+  const options = { weekday: 'long', month: 'long', day: 'numeric' };
+  const formattedDate = today.toLocaleDateString('en-US', options);
+  
   return (
-    <div>
+    <div className="container">
+
       {/* Navbar */}
       {/* Searchbar */}
-      {/* DisplayArea */}
+
+      <p className="header">Hong Kong</p>
+      <p className="header">{formattedDate}</p>
+
+      <DisplayArea />
     </div>
   );
 }
