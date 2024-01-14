@@ -2,13 +2,32 @@
   margin: 0;
 }
 
+.rootLayout {
+  /* width: 20%; */
+  margin: 10px auto;
+}
+
+.navBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.navItem {
+  margin: 5px;
+}
+
 .container {
-  width: 20%;
-  margin: 20px auto;
+  margin: 10px auto;
   border: 1px solid black;
 }
 
-.header {
+.city {
   text-align: center;
+  font-size: 28px;
+}
 
+.date {
+  text-align: center;
+  font-size: 18px;
 }
