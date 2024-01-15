@@ -1,6 +1,6 @@
-import "./Auth.css"
-import EyeImage from '../../assets/images/eye.png'
-import { useState } from "react"
+import "./Auth.css";
+import EyeImage from '../../assets/images/eye.png';
+import { useState } from "react";
 
 export default function SignupForm() {
 
