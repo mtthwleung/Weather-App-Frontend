@@ -15,7 +15,8 @@ export default function Home() {
 
   //setting default info on page load to be London's weather
   const [cityName, setCityName] = useState("London");
-  const capitalizedName = cityName.charAt(0).toUpperCase() + cityName.slice(1);
+  //regex - copied from GPT
+  const capitalizedName = cityName.replace(/(\b\w)/g, (match) => match.toUpperCase());
 
   const defaultWeather = async () => {
     try {
