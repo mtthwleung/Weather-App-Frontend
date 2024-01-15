@@ -1,5 +1,6 @@
 * {
   margin: 0;
+  font-family:'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
 }
 
 .rootLayout {
@@ -11,6 +12,7 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  width: 95%;
 }
 
 .navItem {
