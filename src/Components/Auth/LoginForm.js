@@ -24,6 +24,8 @@ export default function LoginForm() {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
+				// "Accept": 'application/json',
+				// "Access-Control-Allow-Origin": 'http://localhost:3000/'
 			},
 			body: JSON.stringify(requestBody),
 		})
@@ -41,7 +43,7 @@ export default function LoginForm() {
 				setErrorMessage("Internal server error");
 			});
 	};
-
+	
 	return (
 		<div>
 			<form onSubmit={handleSubmit} id="login-form">
