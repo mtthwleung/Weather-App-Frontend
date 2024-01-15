@@ -1,24 +1,57 @@
 import "./Auth.css";
 import EyeImage from "../../assets/images/eye.png";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginForm() {
 	const [showPassword, setShowPassword] = useState(false);
+	const [errorMessage, setErrorMessage] = useState("");
+
+	const navigate = useNavigate();
 
 	const handleClick = () => {
 		setShowPassword(!showPassword);
 	};
 
+	const handleSubmit = (e) => {
+		e.preventDefault();
+
+		const form = e.target;
+		const formData = new FormData(form);
+		const requestBody = Object.fromEntries(formData);
+
+		fetch("http://localhost:8000/auth/login", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(requestBody),
+		})
+			.then((response) => {
+				if (response.ok) {
+					navigate("/");
+				} else {
+					response.json().then((data) => {
+						setErrorMessage(data.message);
+					});
+				}
+			})
+			.catch((err) => {
+				console.log("Error: ", err);
+				setErrorMessage("Internal server error");
+			});
+	};
+
 	return (
 		<div>
-			<form action="/auth/login" method="POST" id="login-form">
+			<form onSubmit={handleSubmit} id="login-form">
 				<div className="form-field">
 					<div>
-						<label for="username" className="input-label">
-							Username
+						<label for="email" className="input-label">
+							Email
 						</label>
 					</div>
-					<input type="text" id="username" name="username" size="30" required />
+					<input type="text" id="email" name="email" size="30" required />
 				</div>
 
 				<div className="form-field">
@@ -37,6 +70,10 @@ export default function LoginForm() {
 						size="30"
 						required
 					/>
+				</div>
+
+				<div className="error-message">
+					{errorMessage && <p style={{ textAlign: "center" }}>{errorMessage}</p>}
 				</div>
 
 				<div className="submit-button">
