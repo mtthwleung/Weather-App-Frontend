@@ -60,13 +60,12 @@
   flex-direction: column;
   align-items: center;
   margin: 10px 10px;
-  /* background-color: #DAEAF5; */
   background-color: #C3E2F9;
   border-radius: 15px;
   padding: 10px;
 }
 
-/* hover function is not really mobile-first */
+/* hover function is not really mobile-first, maybe also consider onmousedown? */
 .forecast:hover {
   background-color: #5DABE3;
   cursor: pointer;
