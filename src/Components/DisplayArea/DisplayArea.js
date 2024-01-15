@@ -4,7 +4,7 @@ import umbrella from "../../assets/images/umbrella.png"
 import droplet from "../../assets/images/droplet.png"
 import Forecast from './Forecast';
 
-export default function DisplayArea() {
+export default function DisplayArea({weatherData}) {
   const today = new Date();
   const daysOfWeek = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat",];
 
@@ -14,14 +14,17 @@ export default function DisplayArea() {
   const day3 = daysOfWeek[(today.getDay() + 3) % 7];
 
   //dummy data
-  const temperature = 18
-  const weather = "Sunny"
+	const weather = "Sunny"
+	
+	if (!weatherData) {
+		return <p>Loading</p>;
+	}
   
   return (
 			<div className="displayContainer">
 				<div className="todayWeather">
 					<img className="mainImage" src={sunnyImage} alt="sunny icon" />
-        <p className="temperature">{temperature}°C</p>
+        <p className="temperature">{weatherData.day0.temperature}°C</p>
         <p className="weather">{weather}</p>
 				</div>
 

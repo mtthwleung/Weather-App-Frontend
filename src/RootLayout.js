@@ -6,7 +6,7 @@ export default function RootLayout() {
     <div className="rootLayout">
       <header>
         <nav>
-          <h1>Weather App</h1>
+          <h1 style={{margin: '10px'}}>Weather App</h1>
           <div className="navBar">
           <NavLink className="navItem" to="/">Home</NavLink>
           <NavLink className="navItem" to="login">Login</NavLink>
