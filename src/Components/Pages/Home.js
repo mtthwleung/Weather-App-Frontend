@@ -3,56 +3,52 @@ import DisplayArea from '../DisplayArea/DisplayArea';
 import SearchBar from '../SearchBar/SearchBar';
 import { useState, useEffect } from "react";
 
-
 export default function Home() {
+	const today = new Date();
+	const options = { weekday: "long", month: "long", day: "numeric" };
+	const formattedDate = today.toLocaleDateString("en-US", options);
 
-  const today = new Date();
-  const options = { weekday: 'long', month: 'long', day: 'numeric' };
-  const formattedDate = today.toLocaleDateString('en-US', options);
+	const [searchTerm, setSearchTerm] = useState("");
+	const [weatherData, setWeatherData] = useState(null);
 
-  const [searchTerm, setSearchTerm] = useState("");
-  const [weatherData, setWeatherData] = useState(null);
+	//setting default info on page load to be London's weather
+	const [cityName, setCityName] = useState("London");
+	const capitalizedName = cityName.replace(/(\b\w)/g, (match) =>
+		match.toUpperCase()
+	); //regex - copied from GPT
 
-  //setting default info on page load to be London's weather
-  const [cityName, setCityName] = useState("London");
-  //regex - copied from GPT
-  const capitalizedName = cityName.replace(/(\b\w)/g, (match) => match.toUpperCase());
+	const defaultWeather = async () => {
+		try {
+			const response = await fetch(`http://localhost:8000/weather/london`);
+			if (response.ok) {
+				const data = await response.json();
+				setWeatherData(data);
+			} else {
+				console.log("Error: ", response.status);
+			}
+		} catch (error) {
+			console.log("Error: ", error);
+		}
+	};
 
-  const defaultWeather = async () => {
-    try {
-      const response = await fetch(`http://localhost:8000/weather/london`)
-      if (response.ok) {
-        const data = await response.json();
-        console.log('successfully fetched data!')
-        setWeatherData(data);
-      } else {
-      console.log('Error: ', response.status )
-      }
-    } catch (error) {
-      console.log('Error: ', error)
-    }
-  }
+	useEffect(() => {
+		defaultWeather();
+	}, []);
 
-  useEffect(() => {
-    defaultWeather();
-  }, [])
+	return (
+		<div className="container">
+			<SearchBar
+				searchTerm={searchTerm}
+				setSearchTerm={setSearchTerm}
+				weatherData={weatherData}
+				setWeatherData={setWeatherData}
+				setCityName={setCityName}
+			/>
 
-  return (
-    <div className="container">
-      <SearchBar
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-        weatherData={weatherData}
-        setWeatherData={setWeatherData}
-        setCityName={setCityName}
-      />
+			<p className="city">{capitalizedName}</p>
+			<p className="date">{formattedDate}</p>
 
-      <p className="city">{capitalizedName}</p>
-      <p className="date">{formattedDate}</p>
-
-      <DisplayArea
-        weatherData={weatherData}
-      />
-    </div>
-  );
+			<DisplayArea weatherData={weatherData} />
+		</div>
+	);
 }

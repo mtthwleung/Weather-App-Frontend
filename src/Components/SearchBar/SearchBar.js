@@ -34,10 +34,6 @@ export default function SearchBar({
     setSearchTerm('');
   }
 
-  useEffect(() => {
-    console.log(weatherData)
-  }, [weatherData])
-
   return (
     <div className="searchBarContainer">
       <form onSubmit={handleSubmit}>
