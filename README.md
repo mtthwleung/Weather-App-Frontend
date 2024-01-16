@@ -9,7 +9,6 @@ This app is best viewed on a mobile screen.
 - on the top navbar, to the left of the 'Elements' tab, click the icon that toggles device toolbar.
 - select a device emulator to view the application (best on mobile and not tablets)
 
-View on iPhone SE:
 ![image](https://github.com/mtthwleung/Weather-App-Frontend/assets/133343244/7cc38649-2bbc-4a60-a1e5-452d942b67f2)
 
 Usage:
