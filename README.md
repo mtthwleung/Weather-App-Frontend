@@ -13,7 +13,7 @@ This app is best viewed on a mobile screen.
 
 Usage:
 To check the weather, simply type the city name into the searchbar and press enter.
-- currently there is only data for 3 cities available (London, Tokyo, Hong Kong).
+- currently there is only data for 3 cities available (London(default), Tokyo, Hong Kong).
 - exact match needed (all lowercase is supported, but otherwise case sensitive as well)
 - only 3 weather conditions are available (sunny, cloudy, rainy)
 To toggle between celsius and fahrenheit, click on °C/°F.
